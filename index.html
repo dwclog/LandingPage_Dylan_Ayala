@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dylan Ayala | Nutricionista</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0e0e0e;
+    --white: #f9f7f4;
+    --accent: #2d5a3d;
+    --accent-light: #e8f0eb;
+    --muted: #7a7a72;
+    --border: rgba(45,90,61,0.15);
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 5%;
+    background: rgba(249,247,244,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--border);
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--black);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.65rem 1.5rem;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5% 5% 5% 8%;
+  }
+  .hero-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 0.5px;
+    background: var(--accent);
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3.2rem, 5.5vw, 5.2rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.8rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 420px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+  .hero-actions { display: flex; gap: 1.2rem; align-items: center; }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 1rem 2.4rem;
+    border: none;
+    border-radius: 2px;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost {
+    color: var(--accent);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--accent);
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+  .btn-ghost:hover { opacity: 0.65; }
+
+  .hero-image {
+    background: var(--accent-light);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .hero-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--accent);
+    opacity: 0.35;
+  }
+  .hero-image-placeholder svg { width: 64px; height: 64px; }
+  .hero-image-placeholder p { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
+  .hero-stats {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 2rem;
+    display: flex;
+    gap: 2rem;
+    background: rgba(249,247,244,0.9);
+    backdrop-filter: blur(6px);
+    padding: 1.2rem 1.8rem;
+    border-radius: 2px;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+
+  /* SOBRE */
+  section { padding: 7rem 8%; }
+  .section-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 0.5px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .sobre-image-wrap {
+    aspect-ratio: 4/5;
+    background: var(--accent-light);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    opacity: 0.4;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .sobre-image-wrap svg { width: 48px; height: 48px; }
+  .sobre-text p { color: var(--muted); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.02rem; }
+  .sobre-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  .cred-pill {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 0.5px solid var(--accent);
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+  }
+
+  /* SERVIÇOS */
+  #servicos { background: var(--black); color: var(--white); }
+  #servicos .section-tag { color: #7fb48a; }
+  #servicos .section-tag::before { background: #7fb48a; }
+  #servicos .section-title { color: var(--white); }
+  #servicos .section-title em { color: #7fb48a; }
+
+  .servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    margin-top: 4rem;
+    border: 1.5px solid rgba(255,255,255,0.06);
+  }
+  .servico-card {
+    background: rgba(255,255,255,0.03);
+    padding: 3rem 2.5rem;
+    border: 0.5px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .servico-card:hover { background: rgba(45,90,61,0.25); }
+  .servico-icon {
+    width: 3rem;
+    height: 3rem;
+    border: 0.5px solid rgba(127,180,138,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .servico-icon svg { width: 20px; height: 20px; stroke: #7fb48a; fill: none; stroke-width: 1.5; }
+  .servico-num {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    color: #7fb48a;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.15em;
+  }
+  .servico-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .servico-desc { font-size: 0.88rem; color: rgba(249,247,244,0.5); line-height: 1.8; }
+
+  /* DEPOIMENTOS */
+  #depoimentos { background: var(--accent-light); }
+  .depoimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  .depoimento-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 2px;
+    border: 0.5px solid var(--border);
+  }
+  .depoimento-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 1.5rem;
+  }
+  .star { width: 14px; height: 14px; fill: var(--accent); }
+  .depoimento-text {
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--black);
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+  .depoimento-author { display: flex; gap: 1rem; align-items: center; }
+  .author-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    border: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .author-name { font-size: 0.88rem; font-weight: 500; color: var(--black); }
+  .author-meta { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+  /* CONTATO */
+  #contato { background: var(--white); }
+  .contato-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .contato-form { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 3rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .form-input, .form-select, .form-textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 0.5px solid rgba(0,0,0,0.2);
+    padding: 0.7rem 0;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-bottom-color: var(--accent);
+  }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-select { cursor: pointer; background: transparent; }
+  .form-submit {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 1.1rem 2.5rem;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-top: 0.5rem;
+    align-self: flex-start;
+    transition: opacity 0.2s;
+  }
+  .form-submit:hover { opacity: 0.85; }
+  .contato-info { padding-top: 3rem; }
+  .info-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+  }
+  .info-icon {
+    width: 40px;
+    height: 40px;
+    border: 0.5px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .info-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+  .info-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+  .info-value { font-size: 0.98rem; color: var(--black); }
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #25d366;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    transition: opacity 0.2s;
+    width: fit-content;
+  }
+  .whatsapp-btn:hover { opacity: 0.88; }
+  .whatsapp-btn svg { width: 20px; height: 20px; fill: #fff; }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    color: rgba(249,247,244,0.4);
+    padding: 3rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+  .footer-logo { font-family: var(--serif); font-size: 1.2rem; font-weight: 300; color: var(--white); }
+  .footer-copy { font-size: 0.75rem; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.22s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.34s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.46s; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-image { min-height: 50vw; }
+    .sobre-grid, .contato-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .servicos-grid, .depoimentos-grid { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Dylan Ayala</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="#contato" class="nav-cta">Agendar consulta</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Nutricionista Clínico e Esportivo</div>
+    <h1 class="hero-title">
+      Nutrição que<br>
+      <em>transforma</em><br>
+      sua vida
+    </h1>
+    <p class="hero-subtitle">
+      Emagrecimento sustentável, performance máxima e longevidade com saúde. Protocolos personalizados para quem leva a vida a sério.
+    </p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn-primary">Agendar consulta</a>
+      <a href="#sobre" class="btn-ghost">Conheça Dylan</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="hero-image-placeholder">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="32" cy="20" r="10"/>
+        <path d="M12 56c0-11 8.95-20 20-20s20 8.95 20 20"/>
+      </svg>
+      <p>Foto do nutricionista</p>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Pacientes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Anos de experiência</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Satisfação</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-grid">
+    <div class="sobre-image-wrap">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="24" cy="16" r="8"/>
+        <path d="M8 44c0-8.84 7.16-16 16-16s16 7.16 16 16"/>
+      </svg>
+      <p>Foto do profissional</p>
+    </div>
+    <div class="sobre-text">
+      <div class="section-tag">Quem sou</div>
+      <h2 class="section-title">Olá, sou<br><em>Dylan Ayala</em></h2>
+      <p>
+        Nutricionista formado com especialização em nutrição clínica, esportiva e longevidade. Acredito que a alimentação é a base de tudo: do humor ao desempenho, da prevenção de doenças à qualidade de vida no longo prazo.
+      </p>
+      <p>
+        Meu trabalho é entender você como um indivíduo único — seus hábitos, objetivos, rotina e bioquímica — para construir juntos um plano alimentar que realmente funciona e que você consiga seguir.
+      </p>
+      <p>
+        Atendo presencialmente em consultório e também de forma online, para todo o Brasil.
+      </p>
+      <div class="sobre-credentials">
+        <span class="cred-pill">CRN Registrado</span>
+        <span class="cred-pill">Esp. Nutrição Esportiva</span>
+        <span class="cred-pill">Nutrologia e Longevidade</span>
+        <span class="cred-pill">Nutrição Clínica</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="section-tag">O que ofereço</div>
+  <h2 class="section-title">Meus <em>serviços</em></h2>
+
+  <div class="servicos-grid">
+    <div class="servico-card">
+      <div class="servico-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+      </div>
+      <div class="servico-num">01</div>
+      <h3 class="servico-title">Emagrecimento Saudável</h3>
+      <p class="servico-desc">Perda de peso sustentável e sem sofrimento, com estratégias baseadas em evidências científicas, respeitando sua rotina e preferências alimentares.</p>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icon">
+        <svg viewBox="0 0 24 24"><path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/></svg>
+      </div>
+      <div class="servico-num">02</div>
+      <h3 class="servico-title">Nutrição Esportiva</h3>
+      <p class="servico-desc">Maximize sua performance, ganho muscular e recuperação com protocolos nutricionais desenvolvidos para atletas e praticantes de atividade física.</p>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+      </div>
+      <div class="servico-num">03</div>
+      <h3 class="servico-title">Longevidade & Saúde</h3>
+      <p class="servico-desc">Estratégias nutricionais para viver mais e melhor: prevenção de doenças crônicas, anti-inflamatório, saúde metabólica e otimização hormonal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="section-tag">Resultados reais</div>
+  <h2 class="section-title">O que dizem<br>meus <em>pacientes</em></h2>
+  <div class="depoimentos-grid">
+    <div class="depoimento-card">
+      <div class="depoimento-stars">
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="depoimento-text">"Depois de anos tentando dietas, o Dylan foi o primeiro nutricionista que entendeu minha rotina. Perdi 14kg em 5 meses sem passar fome. Mudou minha vida."</p>
+      <div class="depoimento-author">
+        <div class="author-avatar">AM</div>
+        <div>
+          <div class="author-name">Ana Maria S.</div>
+          <div class="author-meta">Emagrecimento · 5 meses</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="depoimento-card">
+      <div class="depoimento-stars">
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="depoimento-text">"Como atleta de crossfit, precisava de um protocolo sério. O Dylan otimizou minha nutrição e meu desempenho aumentou muito. Recomendo muito."</p>
+      <div class="depoimento-author">
+        <div class="author-avatar">RF</div>
+        <div>
+          <div class="author-name">Rafael F.</div>
+          <div class="author-meta">Nutrição Esportiva · 8 meses</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="depoimento-card">
+      <div class="depoimento-stars">
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="depoimento-text">"Busquei o Dylan pensando em longevidade e saúde preventiva. Aprendi a me alimentar de verdade. Meus exames melhoraram em 3 meses. Atendimento impecável."</p>
+      <div class="depoimento-author">
+        <div class="author-avatar">CL</div>
+        <div>
+          <div class="author-name">Cláudia L.</div>
+          <div class="author-meta">Longevidade · 3 meses</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="section-tag">Vamos começar</div>
+  <h2 class="section-title">Agende sua<br><em>consulta</em></h2>
+  <div class="contato-grid">
+    <div>
+      <form class="contato-form" onsubmit="return false;">
+        <div class="form-group">
+          <label class="form-label">Nome completo</label>
+          <input type="text" class="form-input" placeholder="Seu nome">
+        </div>
+        <div class="form-group">
+          <label class="form-label">E-mail</label>
+          <input type="email" class="form-input" placeholder="seu@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">WhatsApp</label>
+          <input type="tel" class="form-input" placeholder="(11) 99999-9999">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Objetivo principal</label>
+          <select class="form-select">
+            <option value="">Selecione...</option>
+            <option>Emagrecimento</option>
+            <option>Performance esportiva</option>
+            <option>Longevidade e saúde</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mensagem (opcional)</label>
+          <textarea class="form-textarea" placeholder="Conte um pouco sobre você e seus objetivos..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar mensagem</button>
+      </form>
+    </div>
+    <div class="contato-info">
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">Consultório</div>
+          <div class="info-value">Rua Exemplo, 123 — Sala 10<br>Cidade, Estado</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">E-mail</div>
+          <div class="info-value">contato@dylanayala.com.br</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">Horários</div>
+          <div class="info-value">Seg–Sex: 8h às 18h<br>Sáb: 8h às 13h</div>
+        </div>
+      </div>
+
+      <a href="https://wa.me/5511999999999" class="whatsapp-btn" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chamar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Dylan Ayala</span>
+  <span class="footer-copy">© 2025 Dylan Ayala · Todos os direitos reservados</span>
+</footer>
+
+</body>
+</html>
